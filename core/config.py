@@ -7,6 +7,8 @@ class Settings(BaseSettings):
     REDIS_CONNECTION_URL: str
     RABBITMQ_DEFAULT_USER: str
     RABBITMQ_DEFAULT_PASS: str
+    JWT_ACCESS_SECRET: str
+    JWT_REFRESH_SECRET: str
     
     class Config:
         env_file = ".env"

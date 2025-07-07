@@ -2,6 +2,9 @@ from fastapi import FastAPI
 from core.config import settings
 import uvicorn
 
+
+from routers.auth import router as AuthRouter
+
 app = FastAPI(
     title="Docfortress APIs",
     description="Backend APIs for the Docfortress application.",
@@ -15,6 +18,8 @@ def get_health():
         "success": True,
         "message": "Good"
     }
+    
+app.include_router(AuthRouter,tags=["Auth"])
 
 if __name__ == "__main__":
     uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)

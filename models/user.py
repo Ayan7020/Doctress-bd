@@ -10,4 +10,5 @@ class User(Base):
     name = Column(String, nullable=False)
     email = Column(String, unique=True, index=True)
     password = Column(String, nullable=False)
-    Department = Column(String, nullable=False)
+    companyName = Column(String, nullable=False)
+    department = Column(String, nullable=False)

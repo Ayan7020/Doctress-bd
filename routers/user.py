@@ -4,7 +4,7 @@ from fastapi import Request
 from middleware.isAuthenticated import is_authenticated
  
 router = APIRouter(
-    dependencies=[Depends(is_authenticated)]
+        
 )
 
 @router.get("/get-logged-in-user")

@@ -1,6 +1,7 @@
 from pydantic import BaseModel 
-from fastapi import UploadFile
+from fastapi import UploadFile 
 
-class SignupModel(BaseModel):
-    email: str
-    UploadFile: str 
+class UploadFileModel(BaseModel): 
+    uploadfile: UploadFileType
+    filename: str 
+    department: str

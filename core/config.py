@@ -7,9 +7,11 @@ class Settings(BaseSettings):
     REDIS_CONNECTION_URL: str
     RABBITMQ_DEFAULT_USER: str
     RABBITMQ_DEFAULT_PASS: str
+    RABBITMQ_URL: str
     JWT_ACCESS_SECRET: str
     JWT_REFRESH_SECRET: str
-    
+    AzureKey: str
+    AzureConnection_string: str
     class Config:
         env_file = ".env"
         

@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import declarative_base
-
-Base = declarative_base()
+from sqlalchemy.orm import declarative_base , relationship
+from models.base import Base 
+ 
 
 class User(Base):
     __tablename__ = 'users'
@@ -12,3 +12,5 @@ class User(Base):
     password = Column(String, nullable=False)
     companyName = Column(String, nullable=False)
     department = Column(String, nullable=False)
+    
+    uploaded_files = relationship("UploadedFile", back_populates="user", cascade="all, delete-orphan")

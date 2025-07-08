@@ -7,7 +7,7 @@ class RabbitMqClient:
         self.channel = None
         
     async def connect(self):
-        self.connection = await aio_pika.connect_robust(settings.REDIS_CONNECTION_URL)
+        self.connection = await aio_pika.connect_robust(settings.RABBITMQ_URL)
         self.channel = await self.connection.channel()
         await self.channel.set_qos(prefetch_count=10)
         

@@ -1,20 +1,19 @@
-from fastapi import FastAPI
-from core.config import settings
+from fastapi import FastAPI  
 import uvicorn
 from utils.Exception.ExceptionHandler import ExceptionHandler
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.exceptions import RequestValidationError 
 from sqlalchemy.exc import SQLAlchemyError
-from fastapi.middleware.cors import CORSMiddleware
-
+from fastapi.middleware.cors import CORSMiddleware 
 from routers.auth import router as AuthRouter
 from routers.user import router as UserRouter
-from routers.ExecutiveUser.executiveroutes import router as ExcutiveRouter
-
+from routers.ExecutiveUser.executiveroutes import router as ExcutiveRouter 
+from routers.ws_notifications import router as WsNotificationRouter
+    
 app = FastAPI(
     title="Docfortress APIs",
     description="Backend APIs for the Docfortress application.",
-    version="1.0.0"
+    version="1.0.0", 
 )
 
 app.add_middleware(
@@ -42,7 +41,7 @@ def get_health():
 app.include_router(AuthRouter,tags=["Auth"])
 app.include_router(UserRouter,tags=["User"])
 app.include_router(ExcutiveRouter,tags=["Executive"])
-
+app.include_router(WsNotificationRouter, tags=["Notifications"])
 
 if __name__ == "__main__":
     uvicorn.run('app:app', host="0.0.0.0", port=8000, reload=True)

@@ -59,6 +59,7 @@ async def UploadPdfController(req: Request,uploadpdf: UploadFileType,fileName: s
                 "blob_url": blob_result["blob_url"],
                 "userId": str(user.id),
                 "department": department,
+                "stored_filename": blob_result["blob_name"],
                 "companyName": user.companyName
             }
         )

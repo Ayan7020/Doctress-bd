@@ -37,6 +37,7 @@ async def CreateAccessToken(req: Request,res: Response,db: AsyncSession = Depend
          
         if not VerifiedrefreshToken:
             raise RequestValidationError("Invalid Refresh Token")
+        
         query = select(User).where(User.email == VerifiedrefreshToken.get("email"))
         result = await db.execute(query)
         existing_user = result.scalar_one_or_none()

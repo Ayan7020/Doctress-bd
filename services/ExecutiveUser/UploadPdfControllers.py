@@ -51,16 +51,17 @@ async def UploadPdfController(req: Request,uploadpdf: UploadFileType,fileName: s
     await db.commit()
     await db.refresh(new_file)
     
-    await rabbitmq.publish(
-        queue_name='uploaddocs',
-        message={
-            "email": user.email,
-            "blob_url": blob_result["blob_url"],
-            "userId": str(user.id),
-            "department": department,
-            "companyName": user.companyName
-        }
-    )
+    if not uploadpdf.filename.lower().endswith(".csv"):
+        await rabbitmq.publish(
+            queue_name='uploaddocs',
+            message={
+                "email": user.email,
+                "blob_url": blob_result["blob_url"],
+                "userId": str(user.id),
+                "department": department,
+                "companyName": user.companyName
+            }
+        )
     
     return {
         "success": True,

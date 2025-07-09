@@ -45,7 +45,7 @@ async def handle_message(message: aio_pika.IncomingMessage):
             print("splitting")
             chunks = splitter.split_documents(docs)
             print("adding in vector Database")
-            await VectorStore.add_documents(chunks)
+            VectorStore.add_documents(chunks)
             print("publishing")
             await redis_client.publish(
                 f"user:{userId}",

@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from routers.auth import router as AuthRouter
 from routers.user import router as UserRouter
 from routers.ExecutiveUser.executiveroutes import router as ExcutiveRouter 
+from routers.Conversation.conversation import router as ConversationRouter
 from routers.ws_notifications import router as WsNotificationRouter
     
 app = FastAPI(
@@ -41,6 +42,7 @@ def get_health():
 app.include_router(AuthRouter,tags=["Auth"])
 app.include_router(UserRouter,tags=["User"])
 app.include_router(ExcutiveRouter,tags=["Executive"])
+app.include_router(ConversationRouter,tags=["Conversation"])
 app.include_router(WsNotificationRouter, tags=["Notifications"])
 
 if __name__ == "__main__":

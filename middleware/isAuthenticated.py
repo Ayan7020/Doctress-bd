@@ -21,4 +21,4 @@ async def is_authenticated(request: Request, db: AsyncSession = Depends(get_db))
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
 
-    request.state.user = user   
+    request.state.user = user 

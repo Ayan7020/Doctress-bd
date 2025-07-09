@@ -14,3 +14,4 @@ class User(Base):
     department = Column(String, nullable=False)
     
     uploaded_files = relationship("UploadedFile", back_populates="user", cascade="all, delete-orphan")
+    conversation = relationship("Conversation", back_populates="user", cascade="all, delete-orphan")

@@ -4,7 +4,7 @@ from fastapi import Depends , Request , HTTPException
 from models.conversation import Conversation
 import uuid
 
-async def Create_conversation_controller(req: Request,session_name: str,db: AsyncSession = Depends(get_db)):
+async def Create_conversation_controller(req: Request,session_name: str,db: AsyncSession):
     """Controller for creating Conversation"""
     try:
         User = req.state.user

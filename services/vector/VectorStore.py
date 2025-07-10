@@ -25,4 +25,4 @@ VectorStore = PineconeVectorStore(
     pinecone_api_key=settings.PINECONE_API_KEY
 )
 
-VectorStoreRetrival = VectorStore.as_retriever(search_kwargs={"k": 6})
+VectorStoreRetrival = VectorStore.as_retriever()
